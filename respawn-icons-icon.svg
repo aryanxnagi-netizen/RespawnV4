@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="RESPAWN icon">
+  <rect width="512" height="512" rx="112" fill="#080809"/>
+  <rect x="40" y="40" width="432" height="432" rx="96" fill="#f4f4f5"/>
+  <text x="256" y="350" text-anchor="middle" font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="300" font-weight="900" fill="#080809">R</text>
+</svg>

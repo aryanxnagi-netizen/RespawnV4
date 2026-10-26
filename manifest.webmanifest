@@ -1,0 +1,15 @@
+{
+  "name": "RESPAWN",
+  "short_name": "RESPAWN",
+  "description": "Find Your Squad. Build Your Legacy.",
+  "start_url": "./index.html#/home",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080809",
+  "theme_color": "#080809",
+  "icons": [
+    { "src": "respawn-icons-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "respawn-icons-icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

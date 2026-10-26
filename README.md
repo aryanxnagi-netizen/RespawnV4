@@ -13,6 +13,25 @@ The brief preferred React + TypeScript + Vite. The build workspace could not dow
 plain HTML, CSS and JavaScript. It opens anywhere, hosts for free on any static host, and needs no build step.
 Moving to React later is straightforward because the logic (`matching.js`, `games.js`, `data.js`) is framework-free.
 
+
+
+## GitHub Pages upload (important)
+
+This project is a **static site**: it has no npm install, no build command, and no `dist` folder.
+
+1. Extract the ZIP. The `index.html` file should be directly at the top level of what you upload (not inside an extra project folder). If your file manager shows a folder before you see `index.html`, open that folder first.
+2. Upload **the contents** of that folder: `index.html`, `css/`, `js/`, `icons/`, `manifest.webmanifest`, `sw.js`, `.nojekyll`, and the remaining project files.
+3. In GitHub, open **Settings → Pages**, select **Deploy from a branch**, choose the branch (usually `main`) and folder `/ (root)`, then save.
+4. Wait for the Pages deployment to complete, then open `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`. Keep the paths relative; do not change them to `/css/...` or `/js/...`, because a project Pages site lives in a subfolder of the domain.
+5. If a previous blank version is cached, open the site in Chrome and reload it once after the new deployment. The service-worker cache was versioned for this refresh.
+
+### UI refresh in this ZIP
+
+- Reworked the existing design tokens into a charcoal/black/white system with clearer text hierarchy, calmer cards, less glow, and subtle transitions/entry animations.
+- Redesigned ARENA cards and filters without replacing its registration logic.
+- Added a visible messages shortcut and an interactive local demo inbox/chat. Demo messages are stored only in this browser and are **not sent to other players**; real multi-user chat still requires authentication and a secured backend.
+- Kept the plain JS architecture and original matching, feed, profile, and registration flows. No new runtime dependencies were added.
+
 ## Open it on your Samsung phone
 
 A phone can't run these files by double-tapping them, so put them on a free static host:
@@ -61,11 +80,11 @@ attribute comparison. **It is a heuristic estimate, not AI and not a validated p
 
 ## Tests that were actually run
 
-| Suite | Command | Result when last run |
+| Suite | Command | Last verified result |
 |---|---|---|
-| Algorithm + data (Node) | `node --test tests/matching.test.js tests/data.test.js` | 21 / 21 passed |
-| Browser, phone size 412×915 (Playwright/Chromium) | `python3 tests/e2e.py` | 81 / 81 passed |
-| Database security (PostgreSQL 16) | `bash supabase/tests/run_local.sh` | 69 / 69 passed, plus a 3-way concurrent double-spend race (1 charge, 2 rejected) |
+| Algorithm + data (Node) | `node --test tests/matching.test.js tests/data.test.js` | **21 / 21 passed** after the UI refresh |
+| Browser, phone size 412×915 (Playwright/Chromium) | `python3 tests/e2e.py` | Suite updated for the refreshed ARENA and chat UI; rerun locally to verify this version |
+| Database security (PostgreSQL 16) | `bash supabase/tests/run_local.sh` | Previous baseline: 69 / 69 passed, plus a 3-way concurrent double-spend race (1 charge, 2 rejected); SQL was not changed in this refresh |
 
 Caveats: the browser tests ran in headless Chromium, **not on a real Samsung device**. The SQL ran on plain
 PostgreSQL 16 with a small stand-in for Supabase's `auth` schema and roles, **not on a real Supabase project**.
@@ -118,3 +137,7 @@ This is a PWA (installable from Chrome). A real APK is not produced. Options: **
 PWA into a Trusted Web Activity (needs the site on HTTPS, a signing key you keep safe, and typically a computer or a cloud build
 service); **Capacitor** for a native shell. A Play Store listing costs a one-time developer fee, and requires a privacy policy
 and child-safety declarations.
+
+
+## GitHub upload (flat-file edition)
+This package places every file in the repository root. Upload all extracted files together. Keep filenames unchanged. `index.html` is the entry point. Backend SQL and test files have prefixes to avoid folders and filename collisions; they are reference files and are not needed to run the front-end demo.
