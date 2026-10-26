@@ -12,39 +12,16 @@
     return { name: parts[0] || 'home', arg: decodeURIComponent(parts[1] || '') };
   }
 
-  
-function topbar() {
-  var unread = store.unread();
-
-  return '<header class="topbar">' +
-
-    '<a class="brand" href="#/home" aria-label="RESPAWN home">' +
-      '<img class="respawn-logo" src="respawn-logo.png" alt="RESPAWN">' +
-    '</a>' +
-
-    '<a class="coin-chip" href="#/wallet" aria-label="Coin balance: 0">' +
-      icon('coin') + '<span>0</span>' +
-    '</a>' +
-
-    '<div class="topbar-actions">' +
-
-      '<a class="icon-btn" href="#/notifications" aria-label="Notifications' +
-        (unread ? ', ' + unread + ' unread' : '') + '">' +
-        icon('bell') +
-        (unread ? '<span class="count">' +
-          (unread > 9 ? '9+' : unread) +
-        '</span>' : '') +
-      '</a>' +
-
-      '<a class="icon-btn" href="#/search" aria-label="Search">' +
-        icon('search') +
-      '</a>' +
-
-    '</div>' +
-
-  '</header>';
-}
-
+  function topbar() {
+    var s = store.state, unread = store.unread();
+    return '<header class="topbar"><a class="brand" href="#/home" aria-label="RESPAWN home"><span class="logo">R</span><span class="wordmark">RESPAWN</span></a>' +
+      '<a class="coin-chip" href="#/wallet" aria-label="Coin balance: 0">' + icon('coin') + '0</a>' +
+      '<a class="icon-btn" href="#/search" aria-label="Search">' + icon('search') + '</a>' +
+      '<a class="icon-btn" href="#/messages" aria-label="Messages">' + icon('message-circle') + '</a>' +
+      '<a class="icon-btn" href="#/notifications" aria-label="Notifications' + (unread ? ', ' + unread + ' unread' : '') + '">' + icon('bell') + (unread ? '<span class="count">' + (unread > 9 ? '9+' : unread) + '</span>' : '') + '</a>' +
+      '<a class="icon-btn" href="#/me" aria-label="My Gamer ID">' + ui.avatar(s.profile.username || 'me', { size: 'sm', theme: h.theme() }) + '</a>' +
+      '<button class="icon-btn" data-act="menu" aria-label="Open menu">' + icon('menu') + '</button></header>';
+  }
   function bottomnav(active) {
     var group = { home: 'home', fragz: 'fragz', squad: 'squad', invites: 'squad', arena: 'arena', tournament: 'arena', me: 'me', studio: 'me', player: 'squad' }[active];
     return '<nav class="bottomnav" aria-label="Primary">' + NAV.map(function (n) {
