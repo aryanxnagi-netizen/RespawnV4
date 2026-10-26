@@ -48,20 +48,102 @@ p { margin: 0; }
 /* ===== app shell ===== */
 #app { min-height: 100dvh; display: flex; flex-direction: column; }
 .topbar {
-  position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: var(--s1);
-  padding: calc(var(--safe-t) + 8px) 10px 8px; min-height: calc(var(--bar-h) + var(--safe-t));
-  background: rgba(11, 13, 18, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+
+/* ===== Minimal RESPAWN top bar ===== */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-t) + 7px) 14px 7px;
+  min-height: calc(var(--bar-h) + var(--safe-t));
+  background: rgba(8, 8, 9, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid #242427;
 }
-.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); margin-right: auto; min-width: 0; min-height: 44px; }
-.logo { width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; font-weight: 900; color: #fff; letter-spacing: -1px; flex: none; }
-.wordmark { font-weight: 800; letter-spacing: .12em; font-size: 15px; }
-@media (max-width: 379px) { .wordmark { display: none; } }
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 44px;
+  min-height: 44px;
+  text-decoration: none;
+  flex: 1;
+}
+
+.brand-logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Coins stay exactly in the centre */
+
+.coin-chip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #171719;
+  border: 1px solid #303034;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.coin-chip svg {
+  width: 16px;
+  height: 16px;
+  color: #ffffff;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex: 1;
+}
+
+.topbar-actions .icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: background 180ms ease,
+              transform 180ms ease;
+}
+
+.topbar-actions .icon-btn:active {
+  background: #252528;
+  transform: scale(0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar-actions .icon-btn {
+    transition: none;
+  }
+}
+  
 .icon-btn { position: relative; width: 38px; height: 38px; display: grid; place-items: center; border-radius: var(--r-pill); background: transparent; border: 0; color: var(--text); cursor: pointer; flex: none; }
 .icon-btn:active { background: var(--surface-2); }
 .icon-btn svg { width: 22px; height: 22px; }
 .count { position: absolute; top: 2px; right: 0; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--danger); color: #1a0808; font-size: 11px; font-weight: 800; display: grid; place-items: center; }
-.coin-chip { display: inline-flex; align-items: center; gap: 4px; height: 38px; padding: 0 10px; border-radius: var(--r-pill); background: var(--surface-2); border: 1px solid var(--border); color: var(--warn); font-weight: 700; font-size: var(--t-sm); text-decoration: none; flex: none; }
-.coin-chip svg { width: 15px; height: 15px; }
 
 main { flex: 1; padding: var(--s4) var(--s4) calc(var(--nav-h) + var(--safe-b) + var(--s5)); max-width: 640px; width: 100%; margin: 0 auto; }
 main.flush { padding: 0 0 calc(var(--nav-h) + var(--safe-b)); max-width: none; }
