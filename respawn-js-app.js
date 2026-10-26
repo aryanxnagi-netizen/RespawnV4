@@ -11,7 +11,6 @@
     var parts = raw.split('/');
     return { name: parts[0] || 'home', arg: decodeURIComponent(parts[1] || '') };
   }
-
   
 function topbar() {
   var s = store.state, unread = store.unread();
@@ -19,7 +18,7 @@ function topbar() {
   return '<header class="topbar">' +
 
     '<a class="brand" href="#/home" aria-label="RESPAWN home">' +
-      '<img class="respawn-logo" src="respawn-logo.png" alt="RESPAWN">' +
+      '<span class="wordmark">RESPAWN</span>' +
     '</a>' +
 
     '<a class="coin-chip" href="#/wallet" aria-label="Coin balance: 0">' +
