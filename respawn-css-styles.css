@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
 /* ===== RESPAWN design system ===== */
 :root {
   /* color tokens */
@@ -340,7 +341,8 @@ input::placeholder, textarea::placeholder { color: #74747d; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
 
-/* ===== RESPAWN top bar update only ===== */
+
+/* ===== RESPAWN wordmark ===== */
 
 .topbar {
   display: grid;
@@ -353,14 +355,17 @@ input::placeholder, textarea::placeholder { color: #74747d; }
   justify-self: start;
   margin-right: 0;
   min-width: 0;
+  text-decoration: none;
 }
 
-.topbar .respawn-logo {
-  display: block;
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  flex: none;
+.topbar .wordmark {
+  font-family: 'Teko', Impact, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+  color: #fff;
+  white-space: nowrap;
 }
 
 .topbar .coin-chip {
@@ -376,19 +381,9 @@ input::placeholder, textarea::placeholder { color: #74747d; }
 }
 
 @media (max-width: 360px) {
-  .topbar {
-    gap: 4px;
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-
-  .topbar .respawn-logo {
-    width: 28px;
-    height: 28px;
-  }
-
-  .topbar .coin-chip {
-    padding: 0 8px;
+  .topbar .wordmark {
+    font-size: 22px;
+    letter-spacing: 1.5px;
   }
 
   .topbar-actions {
@@ -397,6 +392,5 @@ input::placeholder, textarea::placeholder { color: #74747d; }
 
   .topbar-actions .icon-btn {
     width: 34px;
-    height: 38px;
   }
 }
