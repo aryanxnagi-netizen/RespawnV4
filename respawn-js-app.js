@@ -1,4 +1,3 @@
-
 /* RESPAWN app shell: router, top bar, bottom nav, event delegation. */
 (function (root) {
   'use strict';
