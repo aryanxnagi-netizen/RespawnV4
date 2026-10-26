@@ -56,8 +56,8 @@ p { margin: 0; }
 
 /* Logo size reduced */
 .respawn-logo {
-  width: 30px;
-  height: 30px;
+  width: 42px;
+  height: 36px;
   object-fit: contain;
   display: block;
   flex: none;
