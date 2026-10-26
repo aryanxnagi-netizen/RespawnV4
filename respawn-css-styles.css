@@ -339,3 +339,64 @@ input::placeholder, textarea::placeholder { color: #74747d; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+
+/* ===== RESPAWN top bar update only ===== */
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar .brand {
+  justify-self: start;
+  margin-right: 0;
+  min-width: 0;
+}
+
+.topbar .respawn-logo {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: none;
+}
+
+.topbar .coin-chip {
+  justify-self: center;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  min-width: 0;
+}
+
+@media (max-width: 360px) {
+  .topbar {
+    gap: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .topbar .respawn-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .topbar .coin-chip {
+    padding: 0 8px;
+  }
+
+  .topbar-actions {
+    gap: 0;
+  }
+
+  .topbar-actions .icon-btn {
+    width: 34px;
+    height: 38px;
+  }
+}
